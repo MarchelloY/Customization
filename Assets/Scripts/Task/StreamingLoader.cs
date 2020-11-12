@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 namespace Task
 {
+    //Я думал сделать подгрузку картинок в панель чтобы можно было видеть что выбираешь, все работает но картинки в
+    //формате tga и они на сцене отображаются как красные вопросики
     public class StreamingLoader : MonoBehaviour
     {
         [SerializeField] private GameObject icon;
