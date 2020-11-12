@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Task
@@ -6,6 +7,10 @@ namespace Task
     {
         [SerializeField] private PersonButton baseButton;
         [SerializeField] private Transform root;
+
+        public static Action OnMaleClick;
+        public static Action OnFemaleClick;
+        
         private PersonsConfig _config;
         private GameObject currentPerson;
 
@@ -19,7 +24,6 @@ namespace Task
                 btn.Setup(name, OnPersonButton);
             }
             Destroy(baseButton.gameObject);
-            //baseButton.gameObject.SetActive(false);
         }
         
         private void OnPersonButton(string id)
@@ -27,6 +31,15 @@ namespace Task
             var asset = _config.GetPerson(id);
             if (currentPerson != null) Destroy(currentPerson);
             currentPerson = Instantiate(asset, root.position, root.rotation);
+            switch (id)
+            {
+                case "Male":
+                    OnMaleClick?.Invoke();
+                    break;
+                case "Female":
+                    OnFemaleClick?.Invoke();
+                    break;
+            }
         }
     }
 }

@@ -10,8 +10,7 @@ public class EffectButton : MonoBehaviour
     {
         text.text = id;
       
-        button.onClick.AddListener(delegate
-        {
+        button.onClick.AddListener(delegate {
             callback?.Invoke(id);
         });
     }
